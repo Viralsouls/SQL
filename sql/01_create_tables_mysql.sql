@@ -1,44 +1,32 @@
-CREATE TABLE country (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL
-);
+-- Crear base de datos
+CREATE DATABASE IF NOT EXISTS coffee_db;
+USE coffee_db;
 
-CREATE TABLE processing_method (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    method VARCHAR(100) NOT NULL
-);
-
-CREATE TABLE variety (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL
-);
-
-CREATE TABLE farm (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100),
-    owner VARCHAR(100),
-    region VARCHAR(100),
-    altitude VARCHAR(100),
-    company VARCHAR(100),
-    country_id INT,
-    FOREIGN KEY (country_id) REFERENCES country(id)
-);
+-- Crear tabla principal unificada
+DROP TABLE IF EXISTS coffee_sample;
 
 CREATE TABLE coffee_sample (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    species VARCHAR(50),
+    species VARCHAR(20),
+    owner VARCHAR(100),
+    country_of_origin VARCHAR(100),
+    farm_name VARCHAR(100),
+    lot_number VARCHAR(50),
+    mill VARCHAR(100),
+    ICO_number VARCHAR(50),
+    company VARCHAR(100),
+    altitude_mean FLOAT,
+    region VARCHAR(100),
+    producer VARCHAR(100),
+    number_of_bags INT,
+    bag_weight VARCHAR(50),
+    in_country_partner VARCHAR(100),
+    harvest_year VARCHAR(20),
+    grading_date DATE,
     color VARCHAR(50),
-    farm_id INT,
-    processing_method_id INT,
-    variety_id INT,
-    FOREIGN KEY (farm_id) REFERENCES farm(id),
-    FOREIGN KEY (processing_method_id) REFERENCES processing_method(id),
-    FOREIGN KEY (variety_id) REFERENCES variety(id)
-);
-
-CREATE TABLE tasting_score (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    coffee_sample_id INT,
+    status VARCHAR(50),
+    processing_method VARCHAR(100),
+    expiration DATE,
     aroma FLOAT,
     flavor FLOAT,
     aftertaste FLOAT,
@@ -51,13 +39,12 @@ CREATE TABLE tasting_score (
     cupper_points FLOAT,
     total_cup_points FLOAT,
     moisture FLOAT,
-    FOREIGN KEY (coffee_sample_id) REFERENCES coffee_sample(id)
-);
-
-CREATE TABLE defect (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    coffee_sample_id INT,
     category_one_defects INT,
     quakers INT,
-    FOREIGN KEY (coffee_sample_id) REFERENCES coffee_sample(id)
+    category_two_defects INT,
+    defects INT,
+    roast VARCHAR(50),
+    sample_number VARCHAR(50),
+    altitude_low FLOAT,
+    altitude_high FLOAT
 );
