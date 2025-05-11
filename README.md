@@ -7,16 +7,19 @@ Este proyecto tiene como objetivo gestionar y analizar datos de calidad de café
 ## 📂 Estructura del Proyecto
 
 /data
+
 ├── arabica_data_cleaned.csv
 ├── robusta_data_cleaned.csv
 └── merged_data_cleaned.csv
 
 /sql
+
 ├── 01_create_tables_mysql.sql
 ├── 02_load_data.sql
 └── 03_objects.sql
 
 /doc
+
 └── Entrega2_Martin.pdf
 
 ---
