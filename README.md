@@ -40,13 +40,4 @@ proyecto_base_datos_cafe/
 
 1. Ejecutar `01_create_schema.sql` para crear la base de datos y sus tablas.
 2. Ejecutar `02_insert_data.sql` para cargar los datos de ejemplo.
-3. Ejecutar `03_objects.sql` para crear vistas, funciones, procedimientos y triggers.
-
-## 📄 Autor
-
-- **Nombre y Apellido:** [Completar]
-- **Carrera / Materia:** [Completar]
-
----
-
-Este repositorio está diseñado para facilitar la revisión del proyecto por parte del tutor o profesor, con una estructura clara y documentación completa.
+3. Ejecutar `03_objects.sql` para crear vistas, funciones, procedimientos y triggers
