@@ -18,7 +18,7 @@ proyecto_base_datos_cafe/
 │   └── coffee_er_diagram.png
 │
 ├── docs/                  # Documentación PDF
-│   └── Entrega2_Apellido.pdf
+│   └── Entrega2_Martin.pdf
 │
 └── README.md              # Documentación principal del repositorio
 ```
