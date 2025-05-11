@@ -1,43 +1,98 @@
-# Proyecto de Base de Datos: Análisis de Café
+# ☕ Coffee Quality Database Project
 
-Este proyecto consiste en el modelado y construcción de una base de datos relacional que permite almacenar, analizar y consultar datos sobre muestras de café de distintas fincas y países.
+Este proyecto tiene como objetivo gestionar y analizar datos de calidad de cafés de diferentes regiones y tipos, basándose en tres conjuntos de datos: *Arabica*, *Robusta* y *Merged*. Utiliza MySQL como sistema gestor de base de datos.
 
-## 📁 Estructura del Repositorio
+---
 
-```
-proyecto_base_datos_cafe/
-│
-├── sql/                   # Scripts SQL de creación, inserción y objetos
-│   ├── 01_create_schema.sql
-│   ├── 02_insert_data.sql
-│   └── 03_objects.sql
-│
-├── data/                  # Archivos CSV u otros utilizados para la carga de datos
-│
-├── diagrams/              # Diagramas E-R y otros visuales
-│   └── coffee_er_diagram.png
-│
-├── docs/                  # Documentación PDF
-│   └── Entrega2_Martin.pdf
-│
-└── README.md              # Documentación principal del repositorio
-```
+## 📂 Estructura del Proyecto
 
-## 📝 Contenido del Proyecto
+/data
+├── arabica_data_cleaned.csv
+├── robusta_data_cleaned.csv
+└── merged_data_cleaned.csv
 
-- **Diagrama Entidad-Relación (E-R)** con al menos 8 relaciones.
-- **Scripts de creación de tablas**, relaciones y restricciones.
-- **Vistas, Funciones, Stored Procedures y Triggers**.
-- **Datos de ejemplo** para realizar consultas y pruebas.
-- **Documentación en PDF** con análisis del proyecto, objetivo, problemática y modelo de negocio.
+/sql
+├── 01_create_tables_mysql.sql
+├── 02_load_data.sql
+└── 03_objects.sql
 
-## 🛠️ Requisitos Técnicos
+/doc
+└── Entrega2_Martin.pdf
 
-- SQL estándar compatible con PostgreSQL / MySQL
-- Editor recomendado: DBeaver, pgAdmin o MySQL Workbench
+---
 
-## 🚀 Ejecución
+## ⚙️ Requisitos
 
-1. Ejecutar `01_create_schema.sql` para crear la base de datos y sus tablas.
-2. Ejecutar `02_insert_data.sql` para cargar los datos de ejemplo.
-3. Ejecutar `03_objects.sql` para crear vistas, funciones, procedimientos y triggers
+- MySQL Server
+- Cliente SQL (Workbench, DBeaver, CLI, etc.)
+
+---
+
+## 🚀 Pasos para ejecutar el proyecto
+
+1. **Crear la base de datos y las tablas:**
+   ```sql
+   Creados desde ./sql/01_create_tables_mysql.sql;
+
+2. Cargar los datos desde los archivos CSV:
+
+Asegúrate de tener los archivos .csv en la ruta correcta (/data).
+
+Luego ejecuta: ./sql/02_load_data.sql;
+
+
+3. Crear objetos de base de datos (vistas, funciones, procedimientos, triggers):
+
+Ejecutar: ./sql/03_objects.sql;
+
+
+📊 Vistas
+avg_score_by_country
+Descripción: Promedia el puntaje total por país de origen.
+
+Tablas involucradas: coffee_sample.
+
+high_defect_samples
+Descripción: Muestra registros con defectos categoría 1 o 2 superiores a 10.
+
+Tablas involucradas: coffee_sample.
+
+🔧 Funciones
+classify_quality(score FLOAT)
+Descripción: Clasifica un puntaje como 'Excelente', 'Buena', etc.
+
+Utiliza: Puntaje total (total_cup_points).
+
+total_defects(cat1, cat2)
+Descripción: Suma los defectos de categoría 1 y 2.
+
+Utiliza: Campos category_one_defects, category_two_defects.
+
+🛠️ Stored Procedures
+get_samples_by_country(IN countryName)
+Descripción: Lista los cafés por país.
+
+Tablas involucradas: coffee_sample.
+
+insert_coffee_basic(...)
+Descripción: Inserta un nuevo registro con campos básicos.
+
+Tablas involucradas: coffee_sample.
+
+🚨 Triggers
+check_score_before_insert
+Descripción: Evita insertar un puntaje total mayor a 100.
+
+Tabla afectada: coffee_sample.
+
+log_insert_sample
+Descripción: Registra inserciones en una tabla de auditoría.
+
+Tablas: coffee_sample, audit_log.
+
+📎 Notas adicionales
+La base de datos se llama coffee_db y se crea automáticamente en el script 01.
+
+Todos los scripts están preparados para funcionar sobre MySQL sin modificaciones adicionales.
+
+Si se desea ejecutar importación directa desde un gestor gráfico, los .csv pueden ser importados manualmente desde la carpeta /data.
