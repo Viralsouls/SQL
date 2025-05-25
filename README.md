@@ -31,7 +31,7 @@ Este proyecto tiene como objetivo gestionar y analizar datos de calidad de café
 ## 🚀 Pasos para ejecutar el proyecto
 
 1. **Preparación de datos:**
-   - Descarga los archivos CSV desde [link_to_data]
+   - Descarga los archivos CSV desde SQL/data
    - Coloca los archivos en la carpeta `/data` del proyecto
 
 2. **Carga de datos (2 opciones):**
@@ -44,21 +44,21 @@ Este proyecto tiene como objetivo gestionar y analizar datos de calidad de café
    3. ./sql/03_objects.sql
    Nota: Asegúrate que la ruta '../data/' en 02_load_data.sql coincida con la ubicación real de tus archivos CSV.
 
-Opción B - Usando MySQL Workbench:
+   Opción B - Usando MySQL Workbench:
 
-Ejecuta 01_create_tables_mysql.sql
+   Ejecuta 01_create_tables_mysql.sql
 
-Para cada archivo CSV:
+   Para cada archivo CSV:
 
-Click derecho en la tabla coffee_sample
-Seleccionar "Table Data Import Wizard"
-Seleccionar el archivo CSV correspondiente
-Configurar delimitador como ',' y enclosure como '"'
-Mapear columnas según corresponda
-Ejecuta 03_objects.sql
+   Click derecho en la tabla coffee_sample
+   Seleccionar "Table Data Import Wizard"
+   Seleccionar el archivo CSV correspondiente
+   Configurar delimitador como ',' y enclosure como '"'
+   Mapear columnas según corresponda
+   Ejecuta 03_objects.sql
 
-Verificación:
+   Verificación:
 
-SELECT COUNT(*) FROM coffee_sample;
+   SELECT COUNT(*) FROM coffee_sample;
 
-Deberías ver registros de las tres fuentes de datos.  
+   Deberías ver registros de las tres fuentes de datos.  
