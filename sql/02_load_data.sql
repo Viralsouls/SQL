@@ -1,10 +1,13 @@
 -- Seleccionar base de datos
 USE coffee_db;
 
+-- Enable local infile
+SET GLOBAL local_infile = 1;
+
 -- -------------------------------
 -- CARGA DE DATOS PARA ARABICA
 -- -------------------------------
-LOAD DATA INFILE '../data/arabica_data_cleaned.csv'
+LOAD DATA LOCAL INFILE '../data/arabica_data_cleaned.csv'
 INTO TABLE coffee_sample
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
@@ -18,7 +21,7 @@ IGNORE 1 ROWS
 -- -------------------------------
 -- CARGA DE DATOS PARA ROBUSTA
 -- -------------------------------
-LOAD DATA INFILE '../data/robusta_data_cleaned.csv'
+LOAD DATA LOCAL INFILE '../data/robusta_data_cleaned.csv'
 INTO TABLE coffee_sample
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
@@ -32,7 +35,7 @@ IGNORE 1 ROWS
 -- -------------------------------
 -- CARGA DE DATOS PARA MERGED
 -- -------------------------------
-LOAD DATA INFILE '../data/merged_data_cleaned.csv'
+LOAD DATA LOCAL INFILE '../data/merged_data_cleaned.csv'
 INTO TABLE coffee_sample
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
